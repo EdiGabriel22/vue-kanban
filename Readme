@@ -1,0 +1,3 @@
+npx nodemon main.ts  
+
+psql -U postgres -d app -f create.sql 

@@ -6,3 +6,6 @@ const connection = new PgPromiseConnection()
 const http = new ExpressAdapter()
 new BoardController(http, connection)
 http.listen(3000)
+process.on("exit", async function() {
+    await connection.close()
+})
