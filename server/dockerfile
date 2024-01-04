@@ -1,0 +1,15 @@
+FROM node:16
+
+WORKDIR /usr/src/app
+
+COPY package.json yarn.lock tsconfig.json ./
+
+RUN yarn install
+
+RUN yarn global add ts-node nodemon
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["nodemon", "--watch", "src/**/*.ts", "--exec", "ts-node", "./src/main.ts"]
